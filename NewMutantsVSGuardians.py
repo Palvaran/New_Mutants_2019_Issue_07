@@ -10,12 +10,14 @@ print(*mutants, sep =", ")
 print('Guardians:')
 print(*guardians, sep =", ")
 print('')
-count = 0
-while True:
-    print(count)
-    count += 1
-    if count >= 7:
-        break
+while mutant_survivors > 0 or guardian_survivors > 0:
+    print('')
+    mutant_survivors=len(mutants)
+    print(str(mutant_survivors) + ' Mutants left!')
+    print(*mutants, sep =", ")
+    guardian_survivors=len(guardians)
+    print(str(guardian_survivors) + ' Guardians left!')
+    print(*guardians, sep =", ")
     mutant1 = (random.choice(mutants))
     die1 = random.randint(1,6)
     print(mutant1 + ' rolled a ' + str(die1))
@@ -32,11 +34,3 @@ while True:
         print ('Its a double knockout!')
         mutants.remove(mutant1)
         guardians.remove(guardian1)
-    count += 1
-print('')
-mutant_survivors=len(mutants)
-print(str(mutant_survivors) + ' Mutants left!')
-print(*mutants, sep =", ")
-guardian_survivors=len(guardians)
-print(str(guardian_survivors) + ' Guardians left!')
-print(*guardians, sep =", ")
