@@ -1,6 +1,7 @@
 import random
 mutants = ['Mirage', 'Smasher', 'Mondo', 'Chamber', 'Wolfsbane', 'Karma']
 guardians = ['Manta', 'Earthquake', 'Quasar', 'Starbolt', 'Flashfire', 'Hussar']
+round = 1
 print('ROUND ONE:')
 print('')
 print('Mutants:')
@@ -10,10 +11,13 @@ print(*guardians, sep =", ")
 print('')
 while len(mutants) > 0 and len(guardians) > 0:
     print('')
+    print('Fight ' + str(round))
+    print('')
     print(str(len(mutants)) + ' Mutants left!')
     print(*mutants, sep =", ")
     print(str(len(guardians)) + ' Guardians left!')
     print(*guardians, sep =", ")
+    print('')
     print('----FIGHT----')
     mutant1 = (random.choice(mutants))
     die1 = random.randint(1,6)
@@ -31,3 +35,8 @@ while len(mutants) > 0 and len(guardians) > 0:
         print ('Its a double knockout!')
         mutants.remove(mutant1)
         guardians.remove(guardian1)
+    round += 1
+if len(mutants) > 0:
+    print('The Mutants are victorius! Congratulations to ' +str(mutants) + '!')
+else:
+    print('The Guardians are victorius! Congratulations to ' +str(guardians) + '!')
