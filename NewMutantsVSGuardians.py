@@ -1,8 +1,6 @@
 import random
 mutants = ['Mirage', 'Smasher', 'Mondo', 'Chamber', 'Wolfsbane', 'Karma']
-mutant_survivors=len(mutants)
 guardians = ['Manta', 'Earthquake', 'Quasar', 'Starbolt', 'Flashfire', 'Hussar']
-guardian_survivors=len(guardians)
 print('ROUND ONE:')
 print('')
 print('Mutants:')
@@ -10,14 +8,13 @@ print(*mutants, sep =", ")
 print('Guardians:')
 print(*guardians, sep =", ")
 print('')
-while mutant_survivors > 1 and guardian_survivors > 1:
+while len(mutants) > 0 and len(guardians) > 0:
     print('')
-    mutant_survivors=len(mutants)
-    print(str(mutant_survivors) + ' Mutants left!')
+    print(str(len(mutants)) + ' Mutants left!')
     print(*mutants, sep =", ")
-    guardian_survivors=len(guardians)
-    print(str(guardian_survivors) + ' Guardians left!')
+    print(str(len(guardians)) + ' Guardians left!')
     print(*guardians, sep =", ")
+    print('----FIGHT----')
     mutant1 = (random.choice(mutants))
     die1 = random.randint(1,6)
     print(mutant1 + ' rolled a ' + str(die1))
