@@ -36,7 +36,9 @@ while len(mutants) > 0 and len(guardians) > 0:
         mutants.remove(mutant1)
         guardians.remove(guardian1)
     round += 1
+    print('')
 if len(mutants) > 0:
-    print('The Mutants are victorius! Congratulations to ' +str(mutants) + '!')
+    print('The Mutants are victorius! Congratulations to ' + ', '.join(mutants) + '!') 
 else:
-    print('The Guardians are victorius! Congratulations to ' +str(guardians) + '!')
+    print('The Guardians are victorius! Congratulations to ' + ', '.join(guardians) + '!')   
+
