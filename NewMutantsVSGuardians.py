@@ -10,7 +10,7 @@ print(*mutants, sep =", ")
 print('Guardians:')
 print(*guardians, sep =", ")
 print('')
-while mutant_survivors > 0 or guardian_survivors > 0:
+while mutant_survivors > 1 and guardian_survivors > 1:
     print('')
     mutant_survivors=len(mutants)
     print(str(mutant_survivors) + ' Mutants left!')
