@@ -45,6 +45,10 @@ if len(mutants) > 0:
 else:
     y += 1
     print('The Guardians are victorius!')
+print('')
+print('ROUND TWO:')
+print('The eliminated team is then allowed to introduce their final three players.')
+print('')
 if x == 0:
     mutants.append('Cannonball')
     mutants.append('Sunspot')
@@ -53,10 +57,6 @@ else:
     guardians.append('Mentor')
     guardians.append('Oracle')
     guardians.append('Gladiator')
-print('')
-print('ROUND TWO:')
-print('The eliminated team is then allowed to introduce their final three players.')
-print('')
 print('Mutants:')
 print(*mutants, sep =", ")
 print('Guardians:')
@@ -96,3 +96,5 @@ if len(mutants) > 0:
 else:
     y += 1
     print('The Guardians are victorius! Congratulations to ' + ', '.join(guardians) + '!')   
+print('That is ' + str(x) + ' wins for the Mutants.')
+print('That is ' + str(y) + ' wins for the Guardians.')
