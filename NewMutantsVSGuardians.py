@@ -1,100 +1,85 @@
 import random
+
 mutants = ['Mirage', 'Smasher', 'Mondo', 'Chamber', 'Wolfsbane', 'Karma']
+mutant_reinforcements = ['Cannonball', 'Sunspot', 'Magik']
 guardians = ['Manta', 'Earthquake', 'Quasar', 'Starbolt', 'Flashfire', 'Hussar']
-round = 1
-x = 0
-y = 0
-print('ROUND ONE:')
-print('')
-print('Mutants:')
-print(*mutants, sep =", ")
-print('Guardians:')
-print(*guardians, sep =", ")
-print('')
-while len(mutants) > 0 and len(guardians) > 0:
+guardian_reinforcements = ['Mentor', 'Oracle', 'Gladiator']
+wins_mutants = 0
+wins_guardians = 0
+
+def roundone():
+    print('New Mutants 2019, Issue 07')
     print('')
-    print('Fight ' + str(round))
+    print('Normally, this fight would have gone on for seventeen glorious pages. Women and men would have triumphed, male and female aliens would have fallen. Maybe vice versa. Maybe not. But now there is only one way to tell...and all you need is a pair of dice.')
     print('')
-    print(str(len(mutants)) + ' Mutants left!')
+    print('LETS GET IT ON!')
+    print('')
+    print('ROUND ONE:')
+    print('Roll one die each to choose a combatant from a side - one mutant, one guardian')
+    print('')
+    rosters()
+    print('')
+    print('Then roll for damage for each character. Whoever rolls the highest number wins, and the lower number is eliminated. If both numbers are the same, BOTH characters are eliminated. Play until one team is eliminated.')
+    print('')
+
+def roundtwo():
+    print('ROUND TWO:')    
+    print('The eliminated team is then allowed to introduce their final three players. Play until one team is, again, eliminated. If the winning team lost the first round, then the losing team can use their final three players. Then, again, play until one team is eliminated.')
+    print('')
+    print('Mutants')
+    print(*mutant_reinforcements, sep =", ")
+    print('Guardians')
+    print(*guardian_reinforcements, sep =", ")
+    print('')
+
+def rosters():
+    print(str(len(mutants)) + ' Mutants')
     print(*mutants, sep =", ")
-    print(str(len(guardians)) + ' Guardians left!')
+    print(str(len(guardians)) + ' Guardians')
     print(*guardians, sep =", ")
-    print('')
-    print('----FIGHT----')
-    mutant1 = (random.choice(mutants))
-    die1 = random.randint(1,6)
-    print(mutant1 + ' rolled a ' + str(die1))
-    guardian1 =(random.choice(guardians))
-    die2 = random.randint(1,6)
-    print(guardian1 + ' rolled a ' + str(die2))
-    if (die1 > die2):
-        print (mutant1 + ' wins! ' + (guardian1) + ' loses!')
-        guardians.remove(guardian1)
-    elif (die1 < die2):
-        print (guardian1 + ' wins! ' + (mutant1) + ' loses!')
-        mutants.remove(mutant1)
+
+roundone()
+roundtwo()
+while wins_mutants or wins_guardians < 3:
+    while len(mutants) > 0 and len(guardians) > 0:
+        print(str(len(mutants)) + ' mutants left vs. ' + str(len(guardians)) + ' guardians left.')
+        mutant = (random.choice(mutants))
+        guardian =(random.choice(guardians))
+        dice_mutant = random.randint(2,12)
+        dice_guardian = random.randint(2,12)
+        if (dice_mutant > dice_guardian):
+            print ((mutant) + ' wins! ' + (guardian) + ' loses!')
+            guardians.remove(guardian)
+        elif (dice_mutant < dice_guardian):
+            print ((guardian) + ' wins! ' + (mutant) + ' loses!')
+            mutants.remove(mutant)
+        else:
+            print ('Its a double knockout!')
+            mutants.remove(mutant)
+            guardians.remove(guardian)
+    if len(mutants) > 0 and wins_mutants < 1:
+        wins_mutants += 1
+        guardians.extend(guardian_reinforcements)
+        print('The Mutants are victorius! ' + str(wins_mutants) + ' wins!')
+        print('...but Guardian reinforcements have arrived!')
+    elif len(guardians) > 0 and wins_guardians < 1:
+        wins_guardians += 1
+        mutants.extend(mutant_reinforcements)
+        print('The Guardians are victorius! ' + str(wins_guardians) + ' wins!')
+        print('...but New Mutant reinforcements have arrived!')
+    elif len(mutants) > 0 and wins_mutants < 2:
+        wins_mutants += 1
+    elif len(guardians) > 0 and wins_guardians < 2:
+        wins_guardians += 1
     else:
-        print ('Its a double knockout!')
-        mutants.remove(mutant1)
-        guardians.remove(guardian1)
-    round += 1
-    print('')
-if len(mutants) > 0:
-    x += 1
-    print('The Mutants are victorius!')
-else:
-    y += 1
-    print('The Guardians are victorius!')
+        break
 print('')
-print('ROUND TWO:')
-print('The eliminated team is then allowed to introduce their final three players.')
-print('')
-if x == 0:
-    mutants.append('Cannonball')
-    mutants.append('Sunspot')
-    mutants.append('Magik')
+print('That is ' + str(wins_mutants) + ' wins for the Mutants.')
+print('That is ' + str(wins_guardians) + ' wins for the Guardians.')
+if wins_mutants > wins_guardians:
+    print('Congratulations to the New Mutants for winning the contest with ' + str(wins_mutants) + ' wins!')
 else:
-    guardians.append('Mentor')
-    guardians.append('Oracle')
-    guardians.append('Gladiator')
-print('Mutants:')
-print(*mutants, sep =", ")
-print('Guardians:')
-print(*guardians, sep =", ")
+    print('Congratulations to the Guardians for winning the content with ' + str(wins_guardians) + ' wins!')
 print('')
-while len(mutants) > 0 and len(guardians) > 0:
-    print('')
-    print('Fight ' + str(round))
-    print('')
-    print(str(len(mutants)) + ' Mutants left!')
-    print(*mutants, sep =", ")
-    print(str(len(guardians)) + ' Guardians left!')
-    print(*guardians, sep =", ")
-    print('')
-    print('----FIGHT----')
-    mutant1 = (random.choice(mutants))
-    die3 = random.randint(2,12)
-    print(mutant1 + ' rolled a ' + str(die3))
-    guardian1 = (random.choice(guardians))
-    die4 = random.randint(2,12)
-    print(guardian1 + ' rolled a ' + str(die4))
-    if (die3 > die4):
-        print (mutant1 + ' wins! ' + (guardian1) + ' loses!')
-        guardians.remove(guardian1)
-    elif (die3 < die4):
-        print (guardian1 + ' wins! ' + (mutant1) + ' loses!')
-        mutants.remove(mutant1)
-    else:
-        print ('Its a double knockout!')
-        mutants.remove(mutant1)
-        guardians.remove(guardian1)
-    round += 1
-    print('')
-if len(mutants) > 0:
-    x += 1
-    print('The Mutants are victorius! Congratulations to ' + ', '.join(mutants) + '!') 
-else:
-    y += 1
-    print('The Guardians are victorius! Congratulations to ' + ', '.join(guardians) + '!')   
-print('That is ' + str(x) + ' wins for the Mutants.')
-print('That is ' + str(y) + ' wins for the Guardians.')
+print('Final rosters')
+rosters()
