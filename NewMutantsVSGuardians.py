@@ -74,6 +74,9 @@ while wins_mutants or wins_guardians < 3:
     else:
         break
 print('')
+print('VICTORY:')
+print('After one team is eliminated, the winning team does not get to claim victory until they scream DEATHBIRD at the top of their lungs. Seriously, you cant win without doing this. Its in the official rules. Youre reading them.')
+print('')
 print('That is ' + str(wins_mutants) + ' wins for the Mutants.')
 print('That is ' + str(wins_guardians) + ' wins for the Guardians.')
 if wins_mutants > wins_guardians:
@@ -83,3 +86,4 @@ else:
 print('')
 print('Final rosters')
 rosters()
+
