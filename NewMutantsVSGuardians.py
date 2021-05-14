@@ -1,3 +1,7 @@
+#Subject:  Attempt to replicate the fight sequence from New Mutants 2019, Issue 07
+#Author:  Palvaran
+#Website:  ideasquantified.com
+
 import random
 import time
 
@@ -90,4 +94,3 @@ else:
 print('')
 print('Final rosters')
 rosters()
-
