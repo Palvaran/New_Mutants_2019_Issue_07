@@ -1,4 +1,5 @@
 import random
+import time
 
 mutants = ['Mirage', 'Smasher', 'Mondo', 'Chamber', 'Wolfsbane', 'Karma']
 mutant_reinforcements = ['Cannonball', 'Sunspot', 'Magik']
@@ -48,12 +49,15 @@ while wins_mutants or wins_guardians < 3:
         dice_mutant = random.randint(2,12)
         dice_guardian = random.randint(2,12)
         if (dice_mutant > dice_guardian):
+            time.sleep(1)
             print ((mutant) + ' wins! ' + (guardian) + ' loses!')
             guardians.remove(guardian)
         elif (dice_mutant < dice_guardian):
+            time.sleep(1)
             print ((guardian) + ' wins! ' + (mutant) + ' loses!')
             mutants.remove(mutant)
         else:
+            time.sleep(1)
             print ('Its a double knockout!')
             mutants.remove(mutant)
             guardians.remove(guardian)
